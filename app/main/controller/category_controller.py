@@ -14,7 +14,7 @@ class CategoryList(Resource):
     @api.doc('list_of_registered_category')
     @api.marshal_list_with(_category, envelope='data')
     def get(self):
-        """List all registered users"""
+        """List all registered category"""
         return get_category()
 
     @api.expect(_category, validate=True)
@@ -26,7 +26,7 @@ class CategoryList(Resource):
 
 @api.route('/<category_id>')
 @api.param('category_id', 'The User identifier')
-@api.response(404, 'User not found.')
+@api.response(404, 'Category not found.')
 class Category(Resource):
     @api.doc('get a category')
     @api.marshal_with(_category)
