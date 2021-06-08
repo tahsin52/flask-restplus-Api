@@ -28,6 +28,7 @@ def delete_category(category_id):
 def update_category(category_id, data):
     category = Category.query.filter(Category.id == category_id).one()
     category.name = data.get('name')
+
     db.session.add(category)
     db.session.commit()
     return "Success Updated"

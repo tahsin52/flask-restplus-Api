@@ -18,6 +18,7 @@ class Product(db.Model):
     tax = db.Column(db.Float)
 
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    brand_id = db.Column(db.Integer, db.ForeignKey('brand.id'))
 
 
     def __repr__(self):

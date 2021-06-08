@@ -28,6 +28,8 @@ def delete_brand(brand_id):
 def update_brand(brand_id, data):
     brand = Brand.query.filter(Brand.id == brand_id).one()
     brand.name = data.get('name')
+    brand.is_active = data.get('is_active')
+
     db.session.add(brand)
     db.session.commit()
     return "Success Updated"

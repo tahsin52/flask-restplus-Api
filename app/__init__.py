@@ -7,6 +7,7 @@ from .main.controller.category_controller import api as category_ns
 from .main.controller.product_controller import api as product_ns
 from .main.controller.brand_controller import api as brand_ns
 from .main.controller.address_controller import api as address_ns
+from .main.controller.order_controller import api as order_ns
 
 
 blueprint = Blueprint('api', __name__)
@@ -33,3 +34,4 @@ api.add_namespace(category_ns, path='/category')
 api.add_namespace(product_ns, path='/product')
 api.add_namespace(brand_ns, path='/brand')
 api.add_namespace(address_ns, path="/address")
+api.add_namespace(order_ns, path="/order")

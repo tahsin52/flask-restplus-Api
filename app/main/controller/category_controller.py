@@ -21,8 +21,18 @@ class CategoryList(Resource):
     @api.response(201, 'Category successfully created.')
     @api.doc('create a new category')
     def post(self) -> Tuple[Dict[str,str], int]:
-        data = request.json
-        return create_category(data=data)
+        try:
+            data = request.json
+            create_category(data=data)
+            response_object = {
+            'Status': "Success",
+            'Message': "Successfully Created",
+            'Data': data
+        }
+            return response_object, 201
+        except Exception as e:
+            raise e
+
 
 @api.route('/<category_id>')
 @api.param('category_id', 'The User identifier')

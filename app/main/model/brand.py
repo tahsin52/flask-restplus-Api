@@ -8,5 +8,7 @@ class Brand(db.Model):
     name = db.Column(db.String(155), unique=True)
     is_active = db.Column(db.Boolean)
 
+    product = db.relationship('Product', backref='Brand.product', lazy='dynamic')
+
     def __repr__(self):
         return "<Brand '{}'>".format(self.name)

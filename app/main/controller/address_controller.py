@@ -49,14 +49,14 @@ class Address(Resource):
                 'Message': "Successfully Updated",
                 'Data': data
             }
-            return response_object
+            return response_object, 200
         except Exception as e:
             response_object = {
                 'Status': "Fail",
                 'Message': str(e),
             }
-            return response_object
+            return response_object,409
 
     @api.response(204, 'Address successfully deleted.')
     def delete(self, address_id):
-        return delete_address(address_id)
+        return delete_address(address_id),204

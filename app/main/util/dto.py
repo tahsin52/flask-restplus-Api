@@ -41,14 +41,15 @@ class ProductDto:
         'status':fields.String(required=True, description='product status'),
         'tax':fields.Float(required=True, description='product tax'),
 
-        'category_id':fields.Integer(required=True, description='product_category')
+        'category_id':fields.Integer(required=True, description='product_category'),
+        'brand_id':fields.Integer(required=True, description='product_brand'),
     })
 
 class BrandDto:
     api = Namespace('brand', description='brand related')
     brand = api.model("brand", {
         'name':fields.String(required=True, description='brand name'),
-        'is_active':fields.String(required=True, description='brand is_active')
+        'is_active':fields.Boolean(required=True, description='brand is_active')
     })
 
 class AddressDto:
@@ -62,4 +63,32 @@ class AddressDto:
         'street_address':fields.String(required=True, description='address street_address'),
         'phone_number':fields.String(required=True, description='address phone_number'),
         'user_id':fields.Integer(required=True, description='address user_id'),
+    })
+
+class OrderDto:
+    api = Namespace('orders', description='orders related')
+    orders = api.model('orders', {
+        'order_number': fields.String(required=True, description='order order_number'),
+        'cargo_pag': fields.String(required=True, description='order cargo_pag'),
+        'payment_type': fields.Integer(required=True, description='order payment_type'),
+        'payment_status': fields.Integer(required=True, description='order payment_status'),
+        'coupon': fields.String(required=True, description='order coupon'),
+        'subtotal': fields.Float(required=True, description='order subtotal'),
+        'grandtotal': fields.Float(required=True, description='order grandtotal'),
+        'address_id': fields.Integer(required=True, description='order grandtotal'),
+        'user_id': fields.Integer(required=True, description='order grandtotal'),
+
+    })
+
+class OrderItemDto:
+    api = Namespace('order_items', description='order_items related')
+    order_items = api.model('order_items', {
+        'name': fields.String(required=True, description='order_item name'),
+        'slug': fields.String(required=True, description='order_item slug'),
+        'price': fields.Float(required=True, description='order_item price'),
+        'quantity': fields.Integer(required=True, description='order_item quantity'),
+        'order_id': fields.Integer(required=True, description='order_item order_id'),
+        'product_id': fields.Integer(required=True, description='order_item product_id'),
+        'user_id': fields.Integer(required=True, description='order_item user_id'),
+
     })

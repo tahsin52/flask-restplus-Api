@@ -21,8 +21,18 @@ class BrandList(Resource):
     @api.response(201, 'Brand successfully created.')
     @api.doc('create a new brand')
     def post(self) -> Tuple[Dict[str,str], int]:
-        data = request.json
-        return create_brand(data=data)
+        try:
+            data = request.json
+            create_brand(data=data)
+            response_object = {
+            'Status': "Success",
+            'Message': "Successfully Created",
+            'Data': data
+        }
+            return response_object, 201
+        except Exception as e:
+            raise e
+
 
 @api.route('/<brand_id>')
 @api.param('brand_id', 'The Brand identifier')
